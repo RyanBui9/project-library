@@ -16,6 +16,8 @@ function displayBooks() {
     let table = document.createElement("table");
     let row1 = document.createElement("tr");
     let row2 = document.createElement("tr");
+    let row3 = document.createElement("tr");
+    row3.className = "read-row";
 
     for (let book of myLibrary) {
         let header = document.createElement("th");
@@ -31,12 +33,31 @@ function displayBooks() {
         let synopsis = document.createElement("td");
         synopsis.textContent = book.synopsis;
         row2.appendChild(synopsis);
+
+        let readCell = document.createElement("td");
+        let readButton = Object.assign(document.createElement("button"), {
+            textContent: "Not Read",
+        });
+        readButton.addEventListener("click", (event) => {
+            if (event.target.textContent === "Not Read") {
+                event.target.textContent = "Read";
+            } else {
+                event.target.textContent = "Not Read";
+            }
+        });
+        readCell.appendChild(readButton);
+        row3.appendChild(readCell);
     }
 
     table.appendChild(row1);
     table.appendChild(row2);
+    table.appendChild(row3);
     oldTable.replaceWith(table);
 
+    removeBookIfClicked();
+}
+
+function removeBookIfClicked() {
     const removeButtons = document.getElementsByClassName("remove-book-btn");
     for (let i = 0; i < removeButtons.length; i++) {
         removeButtons[i].addEventListener("click", () => {
