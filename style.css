@@ -1,0 +1,36 @@
+table {
+    border: 1px solid black;
+    border-collapse: collapse;
+    margin-top: 15px;
+}
+
+.remove-book-btn {
+    position: absolute;
+    top: 5px;
+    left: 5px;
+    height: 15px;
+    width: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+
+td+td,
+th+th {
+    border-left: 1px solid black;
+}
+
+th,
+td {
+    padding: 8px 24px;
+}
+
+th {
+    border-bottom: 1px solid black;
+    position: relative;
+}
+
+td {
+    font-size: small;
+}
